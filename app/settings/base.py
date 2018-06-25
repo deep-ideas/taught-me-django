@@ -47,6 +47,14 @@ INSTALLED_APPS = [
     'section.apps.SectionConfig',
     'lecture.apps.LectureConfig',
 
+    'comment.apps.CommentConfig',
+    'oneTimePayment.apps.OneTimePaymentConfig',
+    'quiz.apps.QuizConfig',
+    'subscriptionPayment.apps.SubscriptionPaymentConfig',
+    'transaction.apps.TransactionConfig',
+    'answer.apps.AnswerConfig',
+
+
     # custom modules
     'helpers.apps.HelpersConfig',
 
