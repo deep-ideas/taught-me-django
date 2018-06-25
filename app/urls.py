@@ -57,4 +57,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/authentication/', obtain_jwt_token),
     path('api/version/', views.version),
+    path('accounts/',admin.site.urls),
 ]

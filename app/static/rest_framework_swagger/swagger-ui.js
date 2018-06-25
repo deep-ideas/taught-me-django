@@ -56,7 +56,7 @@ this["Handlebars"]["templates"]["auth_button"] = Handlebars.template({"compiler"
 this["Handlebars"]["templates"]["auth_view"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   return "            <button type=\"button\" class=\"auth__button auth_submit__button\" data-sw-translate>Authorize</button>\n";
   },"3":function(depth0,helpers,partials,data) {
-  return "            <button type=\"button\" class=\"auth__button auth_logout__button\" data-sw-translate>Logout</button>\n";
+  return "            <button type=\"button\" class=\"auth__button auth_logout__button\" data-sw-translate>Logout bro</button>\n";
   },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, buffer = "<div class=\"auth_container\">\n\n    <div class=\"auth_inner\"></div>\n    <div class=\"auth_submit\">\n";
   stack1 = helpers.unless.call(depth0, (depth0 != null ? depth0.isLogout : depth0), {"name":"unless","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
@@ -77,7 +77,7 @@ this["Handlebars"]["templates"]["basic_auth"] = Handlebars.template({"1":functio
   },"7":function(depth0,helpers,partials,data) {
   return "            <div class=\"auth_label\">\n                <span class=\"basic_auth__label\" data-sw-translate>password:</span>\n                <input required placeholder=\"password\" class=\"basic_auth__password auth_input\" name=\"password\" type=\"password\"/></label>\n            </div>\n";
   },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class='basic_auth_container'>\n    <h3 class=\"auth__title\">Basic authentication";
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class='basic_auth_container'>\n    <h3 class=\"auth__title\">Basic authentication bro";
   stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.isLogout : depth0), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   buffer += "</h3>\n    <form class=\"basic_input_container\">\n        <div class=\"auth__description\">"
