@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'unit.apps.UnitConfig',
     'courses.apps.CoursesConfig',
+    'curiculum.apps.CuriculumConfig',
+    'section.apps.SectionConfig',
 
     # custom modules
     'helpers.apps.HelpersConfig',

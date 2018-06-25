@@ -1,6 +1,6 @@
 from django.contrib import admin
 
+from .models import Section
 # Register your models here.
-from .models import Curiculum
 
-admin.site.register(Curiculum)
+admin.site.register(Section)

@@ -38,7 +38,7 @@ class UserSerializer(serializers.ModelSerializer):
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
-        fields = ("name",)
+        fields = ("name","flag")
 
 class UserSerializerSimple(UserSerializer):
     class Meta:
@@ -46,12 +46,7 @@ class UserSerializerSimple(UserSerializer):
         fields = ('id', 'username', 'email')
 
 class ProfileSerializer(serializers.ModelSerializer):
-    country = {serializers.SlugRelatedField(
-        many=True, 
-        read_only=True,
-        slug_field='countries__name'
-        )}
-    # country = CountrySerializer(required=True,many=True)
+    country = CountrySerializer()
     phone_number = serializers.CharField(
         required=True,
         validators=[UniqueValidator(queryset=Profile.objects.all())]

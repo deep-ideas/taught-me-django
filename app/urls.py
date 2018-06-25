@@ -25,6 +25,8 @@ from . import views
 from unit.api.views import UnitViewset
 from user.api.views import UserViewset,ProfileViewset
 from courses.api.views import CourseViewSet
+from curiculum.api.views import CuriculumViewSet
+from section.api.views import SectionViewSet
 
 # change admin page title
 admin.site.site_header = 'Teachable Admin'
@@ -40,7 +42,10 @@ router.register('unit', UnitViewset)
 #Related TO user
 router.register("user", UserViewset)
 router.register("profile",ProfileViewset)
+
 router.register("courses", CourseViewSet)
+router.register("curiculum", CuriculumViewSet)
+router.register("section", SectionViewSet)
 
 
 urlpatterns = [

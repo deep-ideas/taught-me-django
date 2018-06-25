@@ -10,7 +10,7 @@ from courses.models import Course
 
 class Curiculum(models.Model):
     class Meta:
-        db_table = 'course'
+        db_table = 'curiculum'
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
     name = models.CharField(max_length=255, blank=False)
@@ -20,22 +20,22 @@ class Curiculum(models.Model):
 
     #relational things
 
-    course = models.ForeignKey(
+    course = models.OneToOneField(
         Course,
-        on_delete=models.CASCADE,
-        related_name="to_course"
+        on_delete = models.CASCADE,
+        related_name="curiculum"
     )
 
-    created_by = models.OneToOneField(
+    created_by = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
-        related_name = 'created_by'
+        related_name = 'curiculum_created_by'
     )
 
-    updated_by = models.OneToOneField(
+    updated_by = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
-        related_name = 'updated_by'
+        related_name = 'curiculum_updated_by'
     )
 
     def __str__(self):

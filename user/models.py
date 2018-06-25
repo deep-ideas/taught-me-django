@@ -47,6 +47,6 @@ class Profile(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='countries'
+        related_name='country'
     )
     

@@ -19,13 +19,15 @@ class Course(models.Model):
 
     created_by = models.OneToOneField(
         User,
-        on_delete = models.CASCADE,
+        on_delete = models.SET_NULL,
+        null = True,
         related_name = 'created_by'
     )
 
     updated_by = models.OneToOneField(
         User,
-        on_delete = models.CASCADE,
+        on_delete = models.SET_NULL,
+        null = True,
         related_name = 'updated_by'
     )
 
