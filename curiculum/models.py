@@ -13,7 +13,7 @@ class Curiculum(models.Model):
         db_table = 'curiculum'
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
-    name = models.CharField(max_length=255, blank=False)
+    name = models.CharField(max_length=255, blank=True , null=True)
 
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
@@ -37,6 +37,14 @@ class Curiculum(models.Model):
         on_delete = models.CASCADE,
         related_name = 'curiculum_updated_by'
     )
+
+    def save(self, pk=None):
+        course = Curiculum.objects.get(pk=pk)
+    #    serializer = self.get_serializer(data=request.data)
+    #    serializer.is_valid(raise_exception=True)
+    #    serializer.save()
+    #    return Response(serializer.data, status=status.HTTP_201_CREATED) 
+    
 
     def __str__(self):
         return self.name
