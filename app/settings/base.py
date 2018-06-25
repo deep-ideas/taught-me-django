@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
     'curiculum.apps.CuriculumConfig',
     'section.apps.SectionConfig',
+    'lecture.apps.LectureConfig',
 
     # custom modules
     'helpers.apps.HelpersConfig',

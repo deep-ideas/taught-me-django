@@ -9,9 +9,9 @@ from section.serializers import SectionSerializersSimple
 
 
 class CuriculumSerializers(serializers.ModelSerializer):
-    course = [RecursiveField('courses.serializers.CourseSerializersSimple', read_only=True,many=True ,required=False)]
-    # course = [CourseSerializersSimple(read_only=True,many=True ,required=False)]
-    course_by = serializers.CharField(write_only=True, required=False, allow_null=True,default=course)
+    # course = [RecursiveField('courses.serializers.CourseSerializersSimple',many=True,read_only=True)]
+    course = [CourseSerializersSimple(read_only=True,many=True ,required=False)]
+    course_by = serializers.UUIDField(write_only=True, required=False, allow_null=True)
 
 
     # section_id = [RecursiveField('section.serializers.SectionSerializersSimple',read_only=True)]
@@ -36,7 +36,7 @@ class CuriculumSerializers(serializers.ModelSerializer):
         data = Curiculum(**validated_data)
         
         #related name
-        value = Course.objects.filter(id=course_by).first()
+        value = Course.objects.filter(id=course_by)
         data.course = value
         data.save()
 

@@ -23,7 +23,9 @@ class Curiculum(models.Model):
     course = models.OneToOneField(
         Course,
         on_delete = models.CASCADE,
-        related_name="curiculum"
+        related_name="curiculum",
+        blank=True,
+        null=True
     )
 
     created_by = models.ForeignKey(
