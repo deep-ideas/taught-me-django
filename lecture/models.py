@@ -5,7 +5,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 from section.models import Section
-from curiculum.models import Curiculum
 # Create your models here.
 
 class Lecture(models.Model):

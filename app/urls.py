@@ -25,8 +25,8 @@ from . import views
 from unit.api.views import UnitViewset
 from user.api.views import UserViewset,ProfileViewset
 
-from courses.api.views import CourseViewSet
-from curiculum.api.views import CuriculumViewSet
+from course.api.views import CourseViewSet
+from curriculum.api.views import CurriculumViewSet
 from section.api.views import SectionViewSet
 from lecture.api.views import LectureViewSet
 
@@ -45,8 +45,8 @@ router.register('unit', UnitViewset)
 router.register("user", UserViewset)
 router.register("profile",ProfileViewset)
 
-router.register("courses", CourseViewSet)
-router.register("curiculum", CuriculumViewSet)
+router.register("course", CourseViewSet)
+router.register("curriculum", CurriculumViewSet)
 router.register("section", SectionViewSet)
 router.register("lecture", LectureViewSet)
 

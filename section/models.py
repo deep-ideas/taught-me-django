@@ -4,7 +4,7 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-from curiculum.models import Curiculum
+from curriculum.models import Curriculum
 # Create your models here.
 
 class Section(models.Model):
@@ -19,8 +19,8 @@ class Section(models.Model):
 
     #relation
 
-    curiculum = models.ForeignKey(
-        Curiculum,
+    curriculum = models.ForeignKey(
+        Curriculum,
         on_delete=models.CASCADE,
         related_name='sections'
     )

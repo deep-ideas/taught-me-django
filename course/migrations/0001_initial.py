@@ -13,23 +13,23 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('curriculum', '__first__'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Section',
+            name='Course',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100)),
+                ('name', models.CharField(blank=True, max_length=255, null=True)),
+                ('description', models.TextField(blank=True, null=True)),
+                ('subtitle', models.CharField(blank=True, max_length=255, null=True)),
                 ('created_at', models.DateTimeField(default=django.utils.timezone.now)),
                 ('updated_at', models.DateTimeField(default=django.utils.timezone.now)),
-                ('created_by', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='section_created_by', to=settings.AUTH_USER_MODEL)),
-                ('curriculum', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sections', to='curriculum.Curriculum')),
-                ('updated_by', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='section_updated_by', to=settings.AUTH_USER_MODEL)),
+                ('created_by', models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='course_created_by', to=settings.AUTH_USER_MODEL)),
+                ('updated_by', models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='course_updated_by', to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'db_table': 'section',
+                'db_table': 'course',
             },
         ),
     ]

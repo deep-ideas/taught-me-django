@@ -3,8 +3,8 @@ from .models import Section
 from rest_framework_recursive.fields import RecursiveField
 
 class SectionSerializer(serializers.HyperlinkedModelSerializer):
-    curiculum = RecursiveField('curiculum.serializers.CuriculumSerializersSimple')
-    curiculum_by = serializers.IntegerField(required=False,write_only=True)
+    curriculum = RecursiveField('curriculum.serializers.CurriculumSerializersSimple')
+    curriculum_by = serializers.IntegerField(required=False,write_only=True)
 
     lectures = RecursiveField('lecture.serializers.LectureSerializersSimple',many=True,read_only=True)
     class Meta:
@@ -14,8 +14,8 @@ class SectionSerializer(serializers.HyperlinkedModelSerializer):
             'name',
 
 
-            'curiculum',
-            'curiculum_by',
+            'curriculum',
+            'curriculum_by',
 
             'lectures',
 
