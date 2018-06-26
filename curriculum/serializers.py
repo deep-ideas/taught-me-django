@@ -9,7 +9,7 @@ from section.serializers import SectionSerializersSimple
 
 
 class CurriculumSerializers(serializers.ModelSerializer):
-    course = RecursiveField('course.serializers.CourseSerializersSimple',allow_null=True,required=False)
+    course = RecursiveField('course.serializers.CourseSerializersSimple',allow_null=True,required=False,read_only=True)
     # course = [RecursiveField('course.serializers.CourseSerializersSimple',many=True,blank=True, null=True)]
     # course = [CourseSerializersSimple(read_only=True,many=True ,required=False)]
     course_id = serializers.IntegerField(write_only=True, required=False, allow_null=True)
@@ -32,25 +32,39 @@ class CurriculumSerializers(serializers.ModelSerializer):
 
         )
 
-    def create(self, validated_data):
-        # validated_data.pop('name_by_id',None)
+    # def create(self, validated_data):
+    #     # validated_data.pop('name_by_id',None)
         
+    #     course_id = validated_data.get('course_id')
+    #     validated_data.pop('course_id',None)
+    #     var = Curriculum(**validated_data)
+        
+    #     #related name
+    #     getCourse = Course.objects.filter(id=course_id).first()
+    #     var.course = getCourse
+    #     var.save()
+
+    #     return var
+
+    def get_custom_validated_data(self, validated_data):
         course_id = validated_data.get('course_id')
-        validated_data.pop('course_id',None)
-        var = Curriculum(**validated_data)
-        
-        #related name
-        getCourse = Course.objects.filter(id=course_id).first()
-        var.course = getCourse
-        var.save()
+        validated_data.pop('course_id', None)
+        if course_id:
+            course_id = Course.objects.get(id=course_id)
+            validated_data['course'] = course_id
 
-        return var
+        return validated_data
 
-    # def update(self, instance, validated_data):
-    #     validated_data = self.get_custom_validated_data(validated_data)
-    #     branch = Curriculum.objects.filter(id=instance.id)
-    #     branch.update(**validated_data)
-    #     return branch.get()
+    def create(self, validated_data):
+        validated_data = self.get_custom_validated_data(validated_data)
+        branch = Curriculum.objects.create(**validated_data)
+        return branch
+
+    def update(self, instance, validated_data):
+        validated_data = self.get_custom_validated_data(validated_data)
+        branch = Curriculum.objects.filter(id=instance.id)
+        branch.update(**validated_data)
+        return branch.get()
 
 class CurriculumSerializersSimple(serializers.HyperlinkedModelSerializer):
     class Meta:

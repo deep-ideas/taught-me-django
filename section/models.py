@@ -19,7 +19,7 @@ class Section(models.Model):
     #relation
 
     curriculum = models.ForeignKey(
-        Curriculum,
+        'curriculum.Curriculum',
         on_delete=models.CASCADE,
         related_name='sections'
     )

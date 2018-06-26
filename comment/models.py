@@ -18,24 +18,24 @@ class Comment(models.Model):
 
     #Related goes below
 
-    # lecture = models.OneToOneField(
-    #     Lecture,
-    #     on_delete = models.SET_NULL,
-    #     related_name = "to_lecture",
-    #     null = True,
-    # )
+    lecture = models.OneToOneField(
+        "lecture.Lecture",
+        on_delete = models.SET_NULL,
+        related_name = "to_lecture",
+        null = True,
+    )
 
-    # created_by = models.ForeignKey(
-    #     User,
-    #     on_delete = models.CASCADE,
-    #     related_name = 'comment_created_by'
-    # )
+    created_by = models.ForeignKey(
+        User,
+        on_delete = models.CASCADE,
+        related_name = 'comment_created_by'
+    )
 
-    # updated_by = models.ForeignKey(
-    #     User,
-    #     on_delete = models.CASCADE,
-    #     related_name = 'comment_updated_by'
-    # )
+    updated_by = models.ForeignKey(
+        User,
+        on_delete = models.CASCADE,
+        related_name = 'comment_updated_by'
+    )
 
 
     #Related goes below
