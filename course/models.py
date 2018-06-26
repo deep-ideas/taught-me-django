@@ -9,12 +9,11 @@ class Course(models.Model):
     class Meta:
         db_table = 'course'
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
     name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
     
 
     created_by = models.OneToOneField(

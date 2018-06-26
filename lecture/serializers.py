@@ -6,8 +6,8 @@ from .models import Lecture
 from section.serializers import SectionSerializersSimple
 
 class LectureSerializers(serializers.ModelSerializer):
-    # section = [RecursiveField("section.serializers.SectionSerializersSimple",read_only=True,many=True,required=False)]
-    section = SectionSerializersSimple()
+    section = [RecursiveField("section.serializers.SectionSerializersSimple",read_only=True,many=True,required=False)]
+    # section = SectionSerializersSimple()
     class Meta:
         model=Lecture
         fields=(

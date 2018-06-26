@@ -9,9 +9,9 @@ from section.serializers import SectionSerializersSimple
 
 
 class CurriculumSerializers(serializers.ModelSerializer):
-    # course = [RecursiveField('courses.serializers.CourseSerializersSimple',many=True,read_only=True)]
-    course = [CourseSerializersSimple(read_only=True,many=True ,required=False)]
-    course_by = serializers.UUIDField(write_only=True, required=False, allow_null=True)
+    course = [RecursiveField('courses.serializers.CourseSerializersSimple',many=True,blank=True, null=True)]
+    # course = [CourseSerializersSimple(read_only=True,many=True ,required=False)]
+    owner_id = serializers.IntegerField(write_only=True, required=False, allow_null=True)
 
 
     # section_id = [RecursiveField('section.serializers.SectionSerializersSimple',read_only=True)]
@@ -26,21 +26,21 @@ class CurriculumSerializers(serializers.ModelSerializer):
             'url',
             'name',
             'course',
-            'course_by',
+            'owner_id',
             'sections',
 
         )
     
-    def create(self, validated_data):
+    # def create(self, validated_data):
 
-        data = Curriculum(**validated_data)
+    #     data = Curriculum(**validated_data)
         
-        #related name
-        value = Course.objects.filter(id=course_by)
-        data.course = value
-        data.save()
+    #     #related name
+    #     value = Course.objects.filter(id=owner_id)
+    #     data.course = value
+    #     data.save()
 
-        return data
+    #     return data
 
 class CurriculumSerializersSimple(serializers.HyperlinkedModelSerializer):
     class Meta:

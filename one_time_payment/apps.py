@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class OneTimePaymentConfig(AppConfig):
-    name = 'oneTimePayment'
+    name = 'one_time_payment'

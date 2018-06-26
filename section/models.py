@@ -11,8 +11,7 @@ class Section(models.Model):
     class Meta:
         db_table="section"
 
-    id = models.UUIDField(primary_key=True,default=uuid.uuid4, editable=False,)
-    name = models.CharField(max_length=100,blank=False)
+    name = models.CharField(max_length=100,blank=True, null=True)
 
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)

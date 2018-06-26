@@ -7,9 +7,8 @@ class Country(models.Model):
     class Meta:
         db_table="country"
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
-    name = models.CharField(max_length=45,)
-    flag = models.URLField(max_length=200, blank=True,)
+    name = models.CharField(max_length=45,blank=True, null=True)
+    flag = models.URLField(max_length=200, blank=True,null=True)
 
     def __str__(self):
         return self.name
@@ -24,14 +23,14 @@ class Profile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
     date_of_birth = models.DateField()
     phone_number = models.CharField(max_length=13,)
-    gender = models.SmallIntegerField()
+    gender = models.BooleanField()
     address_line = models.CharField(max_length=200,)
     city = models.CharField(max_length=45,)
     region = models.CharField(max_length=45,)
     postal_code = models.CharField(max_length=6,)
     
-    created_at = models.DateField(auto_now_add=True,)
-    updated_at = models.DateField(auto_now_add=True,)
+    created_at = models.DateTimeField(auto_now_add=True,)
+    updated_at = models.DateTimeField(auto_now_add=True,)
 
     #relation ke user id
     user = models.ForeignKey(

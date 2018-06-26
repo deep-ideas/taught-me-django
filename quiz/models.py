@@ -9,10 +9,7 @@ class Quiz(models.Model):
     class Meta:
         db_table='quiz'
 
-    
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200,blank=True, null=True)
     answer = models.CharField(max_length=100)
     
 

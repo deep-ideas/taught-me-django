@@ -48,9 +48,9 @@ INSTALLED_APPS = [
     'lecture.apps.LectureConfig',
 
     'comment.apps.CommentConfig',
-    'oneTimePayment.apps.OneTimePaymentConfig',
+    'one_time_payment.apps.OneTimePaymentConfig',
     'quiz.apps.QuizConfig',
-    'subscriptionPayment.apps.SubscriptionPaymentConfig',
+    'subscription_payment.apps.SubscriptionPaymentConfig',
     'transaction.apps.TransactionConfig',
     'answer.apps.AnswerConfig',
 
