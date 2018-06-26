@@ -4,7 +4,7 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-from course.models import Course
+# from course.models import Course
 
 # Create your models here.
 
@@ -19,10 +19,10 @@ class Curriculum(models.Model):
 
     #relational things
 
-    course = models.OneToOneField(
-        Course,
+    course = models.ForeignKey(
+        "course.Course",
         on_delete = models.CASCADE,
-        related_name="curriculum",
+        related_name="course_id",
         blank=True,
         null=True,
     )
