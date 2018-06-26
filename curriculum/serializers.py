@@ -12,7 +12,7 @@ class CurriculumSerializers(serializers.ModelSerializer):
     course = RecursiveField('course.serializers.CourseSerializersSimple',allow_null=True,required=False)
     # course = [RecursiveField('course.serializers.CourseSerializersSimple',many=True,blank=True, null=True)]
     # course = [CourseSerializersSimple(read_only=True,many=True ,required=False)]
-    course_id = serializers.IntegerField(write_only=True, required=False, allow_null=True)
+    course_by = serializers.IntegerField(write_only=True, required=False, allow_null=True)
     
 
 
@@ -28,18 +28,18 @@ class CurriculumSerializers(serializers.ModelSerializer):
             'url',
             'name',
             'course',
-            'course_id',
+            'course_by',
             'sections',
 
         )
 
     def create(self, validated_data):
-        course_id = validated_data.get('course_id')
+        course_by = validated_data.get('course_by')
 
         curriculum = Curriculum(**validated_data)
 
         #course
-        getCourse = Course.objects.filter(id=course_id)
+        getCourse = Course.objects.filter(id=course_by)
         curriculum.course = getCourse
         curriculum.save()
 
