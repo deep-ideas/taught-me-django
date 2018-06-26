@@ -14,6 +14,7 @@ class Course(models.Model):
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+    is_enrolled = models.BooleanField(default=False)
     
 
     created_by = models.OneToOneField(

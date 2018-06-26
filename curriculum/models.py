@@ -24,19 +24,23 @@ class Curriculum(models.Model):
         on_delete = models.CASCADE,
         related_name="curriculum",
         blank=True,
-        null=True
+        null=True,
     )
 
     created_by = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
-        related_name = 'curriculum_created_by'
+        blank=True, 
+        null=True,
+        related_name = 'curriculum_created_by',
     )
 
     updated_by = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
-        related_name = 'curriculum_updated_by'
+        related_name = 'curriculum_updated_by',
+        blank=True, 
+        null=True,
     )
 
     # def save(self, pk=None):

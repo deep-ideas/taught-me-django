@@ -20,7 +20,6 @@ class Profile(models.Model):
     class Meta:
         db_table="profile"
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
     date_of_birth = models.DateField()
     phone_number = models.CharField(max_length=13,)
     gender = models.BooleanField()
