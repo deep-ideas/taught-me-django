@@ -37,6 +37,6 @@ class Comment(models.Model):
         related_name = 'comment_updated_by'
     )
 
-
-    #Related goes below
+def __str__(self):
+    return self.name
 

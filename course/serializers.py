@@ -4,7 +4,7 @@ from rest_framework_recursive.fields import RecursiveField
 # from curriculum.serializers import CurriculumSerializersSimple
 
 class CourseSerializers(serializers.ModelSerializer):
-    curriculum = RecursiveField('curriculum.serializers.CurriculumSerializersSimple',read_only=True,required=False)
+    curriculum = RecursiveField('curriculum.serializers.CurriculumSerializersSimple', read_only = True, required = False)
     # to_course = CurriculumSerializersSimple()
     class Meta:
         model = Course

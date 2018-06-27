@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from ..serializers import CommentSerializers
 from ..models import Comment
 
-class CurriculumViewSet(viewsets.ModelViewSet):
+class CommentViewset(viewsets.ModelViewSet):
     serializer_class = CommentSerializers
     queryset = Comment.objects.all()
 

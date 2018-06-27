@@ -30,6 +30,7 @@ from curriculum.api.views import CurriculumViewSet
 from section.api.views import SectionViewSet
 from lecture.api.views import LectureViewSet
 from quiz.api.views import QuizViewSet
+from comment.api.views import CommentViewset
 
 # change admin page title
 admin.site.site_header = 'Teachable Admin'
@@ -52,6 +53,8 @@ router.register("curriculum", CurriculumViewSet)
 router.register("section", SectionViewSet)
 router.register("lecture", LectureViewSet)
 router.register("quiz", QuizViewSet)
+router.register("comment", CommentViewset)
+
 
 
 urlpatterns = [
