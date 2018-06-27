@@ -66,5 +66,5 @@ urlpatterns = [
     path('api/authentication/', obtain_jwt_token),
     path('api/version/', views.version),
     path('accounts/',admin.site.urls),
-    path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-auth/', include('rest_framework.urls')),
 ]
