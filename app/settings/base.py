@@ -22,7 +22,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mjwxc%d#r+ue8c-5vr+303lws3dnoj^0$z4j2y-67@v0rk=5yl'
+SECRET_KEY = 'mjwxc%d#rue8c-5vr303lws3dnoj^0$z4j2y-67@v0rk=5yl'
 # SECRET_KEY = config('SECRET_KEY')
 
 # Application definition
@@ -161,3 +161,14 @@ JWT_AUTH = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+}
+
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
