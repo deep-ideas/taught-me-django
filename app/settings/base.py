@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'subscription_payment.apps.SubscriptionPaymentConfig',
     'transaction.apps.TransactionConfig',
     'answer.apps.AnswerConfig',
+    'question.apps.QuestionConfig',
 
     # custom modules
     'helpers.apps.HelpersConfig',
