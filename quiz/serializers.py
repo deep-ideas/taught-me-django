@@ -3,7 +3,6 @@ from rest_framework_recursive.fields import RecursiveField
 
 from .models import Quiz
 from lecture.models import Lecture
-from lecture.serializers import LectureSerializersSimple
 
 class QuizSerializers(serializers.ModelSerializer):
     lecture = RecursiveField("lecture.serializers.LectureSerializersSimple",read_only=True,required=False,allow_null=True)
@@ -36,4 +35,4 @@ class QuizSerializers(serializers.ModelSerializer):
 class QuizSerializersSimple(serializers.ModelSerializer):
     class Meta:
         model = Quiz
-        fields = ('name', 'answer')                
+        fields = ('name', 'answer',)                

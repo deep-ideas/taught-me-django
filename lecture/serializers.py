@@ -5,14 +5,16 @@ from user.models import User
 
 from .models import Lecture
 from section.models import Section
+from quiz.models import Quiz
 
 from section.serializers import SectionSerializer,SectionSerializersSimple
+from quiz.serializers import QuizSerializersSimple
 
 class LectureSerializers(serializers.ModelSerializer):
-    section = RecursiveField("section.serializers.SectionSerializersSimple",read_only=True,required=False)
+    section = RecursiveField("section.serializers.SectionSerializersSimple",read_only=True,required=False,)
     # section = SectionSerializersSimple()
-
-    getSection = serializers.IntegerField(allow_null=True,write_only=True,required=False)
+    quizzes = RecursiveField("quiz.serializers.QuizSerializersSimple",read_only=True,required=False,many=True)
+    getSection = serializers.IntegerField(allow_null=True,write_only=True,required=False,)
     class Meta:
         model=Lecture
         fields=(
@@ -27,6 +29,8 @@ class LectureSerializers(serializers.ModelSerializer):
 
             #related things
             "section",
+            "quizzes",
+            
             'getSection',
             'updated_by',
             'created_by',

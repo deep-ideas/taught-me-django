@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 
 
 from section.models import Section
+from quiz.models import Quiz
+
 # Create your models here.
 
 class Lecture(models.Model):
