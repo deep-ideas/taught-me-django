@@ -4,6 +4,7 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
 from section.models import Section
 # Create your models here.
 
@@ -28,19 +29,23 @@ class Lecture(models.Model):
     created_by = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
-        related_name = 'lecture_created_by'
+        related_name = 'lecture_created_by',
+        blank=True, 
+        null=True,
     )
 
     updated_by = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
-        related_name = 'lecture_updated_by'
+        related_name = 'lecture_updated_by',
+        blank=True, 
+        null=True,
     )
 
     section = models.ForeignKey(
         Section,
         on_delete = models.CASCADE,
-        related_name = 'lectures'
+        related_name = 'lectures',
     )
 
     def __str__ (self):

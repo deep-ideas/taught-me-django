@@ -15,9 +15,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'teachable',
-        'USER': 'trian',
-        'PASSWORD': 'root',
-        'HOST': '192.168.0.19',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'traditional',
