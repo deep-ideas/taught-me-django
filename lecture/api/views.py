@@ -1,12 +1,12 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
 
 from ..serializers import LectureSerializers
 from ..models import Lecture
 
-from django.contrib.auth.models import User
+
 class LectureViewSet(viewsets.ModelViewSet):
     serializer_class = LectureSerializers
     queryset = Lecture.objects.all()

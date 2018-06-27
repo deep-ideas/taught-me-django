@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'transaction.apps.TransactionConfig',
     'answer.apps.AnswerConfig',
 
-
     # custom modules
     'helpers.apps.HelpersConfig',
 
