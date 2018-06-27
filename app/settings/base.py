@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'curriculum.apps.CurriculumConfig',
     'section.apps.SectionConfig',
     'lecture.apps.LectureConfig',
+    'pricing_plan.apps.PricingPlanConfig',
 
     'comment.apps.CommentConfig',
     'one_time_payment.apps.OneTimePaymentConfig',
