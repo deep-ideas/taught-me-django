@@ -18,12 +18,12 @@ class LectureViewSet(viewsets.ModelViewSet):
         serializer.save(created_by=request.user,updated_by=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    def update(self, request, instance, validated_Data, format=None, pk=None,):
-        # user= request.user._wrapped if hasattr(request.user,'_wrapped') else request.user
-        var = self.get_var(data=request.data)
-        var.is_valid(raise_exception=True)
-        var.save(updated_by=request.user)
-        return Response(var.data, status=status.HTTP_200_OK)
+    # def update(self, request, instance, validated_Data, ):
+    #     # user= request.user._wrapped if hasattr(request.user,'_wrapped') else request.user
+    #     # var = self.get_var(data=request.data)
+    #     # var.is_valid(raise_exception=True)
+    #     # var.save(updated_by=request.user)
+    #     # return Response(var.data, status=status.HTTP_200_OK)
     #     serializer = self.get_serializer(data=request.data)
     #     serializer.is_valid(raise_exception=True)
     #     serializer.save(updated_by=request.user)

@@ -73,7 +73,7 @@ class LectureSerializers(serializers.ModelSerializer):
         # # print type(instance.updated_by = validated_data.get('updated_by', instance.updated_by)) 
         #     print (type(instance.updated_by))
         
-        instance.update(pk=instance.id)
+        instance.save()
         return instance
         
 
