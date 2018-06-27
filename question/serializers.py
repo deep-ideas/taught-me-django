@@ -6,7 +6,7 @@ from .models import Question
 from quiz.models import Quiz
 
 class QuestionSerializers(serializers.ModelSerializer):
-    questions = RecursiveField("quiz.serializers.QuizSerializers",read_only=True,required=False,)
+    quiz = RecursiveField('quiz.serializers.QuizSerializersSimple',read_only=True)
 
     quiz_by = serializers.IntegerField(write_only=True,required=False,)
 
@@ -14,7 +14,8 @@ class QuestionSerializers(serializers.ModelSerializer):
         model = Question
         fields=(
             "name",
-            "questions",
+
+            "quiz",
 
             "quiz_by",
         )

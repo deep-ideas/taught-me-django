@@ -25,7 +25,7 @@ class Question(models.Model):
         on_delete=models.CASCADE,
         blank=True, 
         null=True,
-        related_name="questions"
+        related_name="to_question"
     )
 
     created_by = models.ForeignKey(

@@ -5,7 +5,8 @@ from .models import Quiz
 from lecture.models import Lecture
 
 class QuizSerializers(serializers.ModelSerializer):
-    lecture = RecursiveField("lecture.serializers.LectureSerializersSimple",read_only=True,required=False,allow_null=True)
+    
+    lecture = RecursiveField("lecture.serializers.LectureSerializersSimple",read_only=True,required=False,)
 
     lecture_by = serializers.IntegerField(write_only=True)
     class Meta:
