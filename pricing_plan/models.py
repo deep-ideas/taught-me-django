@@ -24,14 +24,16 @@ class PricingPlan(models.Model):
 
 
     #relation many to one with coursea
-    course_id = models.ForeignKey(
+    course = models.ForeignKey(
         Course,
         on_delete = models.CASCADE,
         related_name='pricing_plan',
+        blank = True,
+        null = True
     )
 
     #relation to user django
-    created_by = models.OneToOneField(
+    created_by = models.ForeignKey(
         User,
         on_delete = models.SET_DEFAULT,
         related_name = 'pricing_plan_created_by',

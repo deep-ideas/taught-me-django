@@ -32,6 +32,7 @@ from lecture.api.views import LectureViewSet
 from quiz.api.views import QuizViewSet
 from question.api.views import QuestionViewSet
 from comment.api.views import CommentViewset
+from pricing_plan.api.views import PricingPlanViewSet
 
 # change admin page title
 admin.site.site_header = 'Teachable Admin'
@@ -42,7 +43,7 @@ swagger_view = get_swagger_view(title='Teachable API')
 router = NoPutRouter()
 
 # main routers
-router.register('unit', UnitViewset)
+router.register("unit", UnitViewset)
 
 #Related TO user
 router.register("user", UserViewset)
@@ -56,6 +57,7 @@ router.register("lecture", LectureViewSet)
 router.register("quiz", QuizViewSet)
 router.register("question", QuestionViewSet)
 router.register("comment", CommentViewset)
+router.register("pricing_plan", PricingPlanViewSet)
 
 
 
