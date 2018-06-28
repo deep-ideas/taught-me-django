@@ -33,6 +33,7 @@ from quiz.api.views import QuizViewSet
 from question.api.views import QuestionViewSet
 from comment.api.views import CommentViewset
 from answer.api.views import AnswerViewSet
+from pricing_plan.api.views import PricingPlanViewSet
 
 # change admin page title
 admin.site.site_header = 'Teachable Admin'
@@ -43,7 +44,7 @@ swagger_view = get_swagger_view(title='Teachable API')
 router = NoPutRouter()
 
 # main routers
-router.register('unit', UnitViewset)
+router.register("unit", UnitViewset)
 
 #Related TO user
 router.register("user", UserViewset)
@@ -58,6 +59,7 @@ router.register("quiz", QuizViewSet)
 router.register("question", QuestionViewSet)
 router.register("comment", CommentViewset)
 router.register("answer",AnswerViewSet)
+router.register("pricing_plan", PricingPlanViewSet)
 
 
 
@@ -68,5 +70,5 @@ urlpatterns = [
     path('api/authentication/', obtain_jwt_token),
     path('api/version/', views.version),
     path('accounts/',admin.site.urls),
-    path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-auth/', include('rest_framework.urls')),
 ]

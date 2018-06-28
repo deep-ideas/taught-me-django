@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "python.pythonPath": "${workspaceFolder}/venv/bin/python"
+=======
+    "python.pythonPath": "/home/arkademy/Documents/.venv/bin/python"
+>>>>>>> d09f1347a0a8f9c78c098b19decb20b16265e005
 }
