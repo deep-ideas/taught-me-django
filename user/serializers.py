@@ -24,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
             fields=("email","username","password")
         )]
         model = User
-        fields = ('id', 'username', 'email','password',)
+        fields = ('id','first_name','last_name','username', 'email',)
 
     def save(self):
         user = User.objects.create_user(
@@ -44,6 +44,11 @@ class UserSerializerSimple(UserSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email')
+
+class UserSerializerName(UserSerializer):
+    class Meta:
+        model = User
+        fields = ('username','first_name','last_name',)
 
 class ProfileSerializer(serializers.ModelSerializer):
     country = CountrySerializer()
