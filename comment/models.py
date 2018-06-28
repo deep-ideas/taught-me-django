@@ -28,7 +28,7 @@ class Comment(models.Model):
     lecture = models.ForeignKey(
         "lecture.Lecture",
         on_delete = models.SET_NULL,
-        related_name = "to_lecture",
+        related_name = "from_comment",
         null = True,
     )
 
