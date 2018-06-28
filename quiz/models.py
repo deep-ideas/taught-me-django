@@ -15,8 +15,8 @@ class Quiz(models.Model):
     name = models.CharField(max_length=200,blank=True, null=True)
     answer = models.CharField(max_length=100,blank=True, null=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
 
     #realted goes here

@@ -32,6 +32,7 @@ from lecture.api.views import LectureViewSet
 from quiz.api.views import QuizViewSet
 from question.api.views import QuestionViewSet
 from comment.api.views import CommentViewset
+from answer.api.views import AnswerViewSet
 
 # change admin page title
 admin.site.site_header = 'Teachable Admin'
@@ -56,6 +57,7 @@ router.register("lecture", LectureViewSet)
 router.register("quiz", QuizViewSet)
 router.register("question", QuestionViewSet)
 router.register("comment", CommentViewset)
+router.register("answer",AnswerViewSet)
 
 
 

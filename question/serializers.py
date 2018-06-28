@@ -13,6 +13,7 @@ class QuestionSerializers(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields=(
+            "id",
             "name",
 
             "quiz",
