@@ -22,7 +22,7 @@ class Curriculum(models.Model):
     course = models.ForeignKey(
         "course.Course",
         on_delete = models.CASCADE,
-        related_name="course_id",
+        related_name="from_curriculum",
         blank=True,
         null=True,
     )
@@ -43,12 +43,7 @@ class Curriculum(models.Model):
         null=True,
     )
 
-    # def save(self, pk=None):
-    #     course = Curriculum.objects.get(pk=pk)
-    #    serializer = self.get_serializer(data=request.data)
-    #    serializer.is_valid(raise_exception=True)
-    #    serializer.save()
-    #    return Response(serializer.data, status=status.HTTP_201_CREATED) 
+    
     
 
     def __str__(self):

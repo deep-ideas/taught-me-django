@@ -8,6 +8,8 @@ from quiz.models import Quiz
 class QuestionSerializers(serializers.ModelSerializer):
     quiz = RecursiveField('quiz.serializers.QuizSerializersSimple',read_only=True)
 
+    to_question = RecursiveField('answer.serializers.AnswerSerializerSimple',read_only=True,many=True)
+
     quiz_by = serializers.IntegerField(write_only=True,required=False,)
 
     class Meta:
@@ -16,6 +18,7 @@ class QuestionSerializers(serializers.ModelSerializer):
             "id",
             "name",
 
+            "to_question",
             "quiz",
 
             "quiz_by",

@@ -6,7 +6,11 @@ from lecture.models import Lecture
 
 class QuizSerializers(serializers.ModelSerializer):
     
-    lecture = RecursiveField("lecture.serializers.LectureSerializersSimple",read_only=True,required=False,)
+    lecture = RecursiveField("lecture.serializers.LectureSerializersSimple",read_only=True)
+    
+    questions = RecursiveField('question.serializers.QuestionSerializersSimple',read_only=True,)
+
+    from_answer = RecursiveField('answer.serializers.AnswerSerializerSimple',read_only=True,many=True)
 
     lecture_by = serializers.IntegerField(write_only=True)
     class Meta:
@@ -15,7 +19,9 @@ class QuizSerializers(serializers.ModelSerializer):
             'id',
             'name', 
             'answer',
-
+            
+            'from_answer',
+            "questions",
             'lecture',
 
             'lecture_by',    

@@ -14,6 +14,7 @@ class LectureSerializers(serializers.ModelSerializer):
     section = RecursiveField("section.serializers.SectionSerializersSimple",read_only=True,required=False,)
     # section = SectionSerializersSimple()
     quizzes = RecursiveField("quiz.serializers.QuizSerializersSimple",read_only=True,required=False,many=True)
+    from_comment = RecursiveField('comment.serializers.CommentSerializersSimple',read_only=True,many=True)
     getSection = serializers.IntegerField(allow_null=True,write_only=True,required=False,)
     class Meta:
         model=Lecture
@@ -30,6 +31,7 @@ class LectureSerializers(serializers.ModelSerializer):
             #related things
             "section",
             "quizzes",
+            "from_comment",
             
             'getSection',
             'updated_by',

@@ -4,8 +4,11 @@ from rest_framework_recursive.fields import RecursiveField
 # from curriculum.serializers import CurriculumSerializersSimple
 
 class CourseSerializers(serializers.ModelSerializer):
-    curriculum = RecursiveField('curriculum.serializers.CurriculumSerializersSimple', read_only = True, required = False)
+    # from_curriculum = RecursiveField('curriculum.serializers.CurriculumSerializersSimple', read_only = True)
+    from_curriculum = RecursiveField('curriculum.serializers.CurriculumSerializersSimple',read_only=True,many=True)
     # to_course = CurriculumSerializersSimple()
+    created_by = RecursiveField('user.serializers.UserSerializerSimple',read_only=True)
+    updated_by = RecursiveField('user.serializers.UserSerializerSimple',read_only=True)
     class Meta:
         model = Course
         fields = (
@@ -14,8 +17,8 @@ class CourseSerializers(serializers.ModelSerializer):
             'subtitle',
 
             'is_enrolled',
-
-            'curriculum',
+            "from_curriculum",
+            
             'updated_by',
             'created_by'
         ) 
