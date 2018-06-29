@@ -10,14 +10,14 @@ from .models import Country , Profile
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # email = serializers.EmailField(
-    #     required=True,
-    #     validators=[UniqueValidator(queryset=User.objects.all())]
-    # )
-    # username = serializers.CharField(
-    #     validators=[UniqueValidator(queryset=User.objects.all())]
-    # )
-    # password = serializers.CharField(min_length=8, write_only=True)
+    email = serializers.EmailField(
+        required=True,
+        validators=[UniqueValidator(queryset=User.objects.all())]
+    )
+    username = serializers.CharField(
+        validators=[UniqueValidator(queryset=User.objects.all())]
+    )
+    password = serializers.CharField(min_length=8, write_only=True)
 
     class Meta:
         validator=[UniqueTogetherValidator(
@@ -46,7 +46,7 @@ class CountrySerializer(serializers.ModelSerializer):
         model = Country
         fields = ("name","flag")
 
-class UserSerializerSimple(UserSerializer):
+class UserSerializerSimple(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('first_name','last_name', 'username', 'email')

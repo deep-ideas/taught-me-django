@@ -10,6 +10,15 @@ class SubscriptionPayment(models.Model):
     class Meta:
         db_table='subscription_payment'
 
-    price = models.DecimalField(max_digits=12,decimal_places=12)
+
+    price = models.FloatField(default=0, null=True, blank=True)
     start_time = models.DateTimeField(default=timezone.now)
-    end_time = models.DateTimeField()
+    end_time = models.DateTimeField(default=timezone.now)
+    is_recuring = models.BooleanField(default=True)
+
+    pricing_plan = models.ForeignKey(
+        'pricing_plan.PricingPlan',
+        on_delete = models.CASCADE,
+        null = True,
+        blank = True
+    )

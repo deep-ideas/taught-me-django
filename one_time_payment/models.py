@@ -13,9 +13,18 @@ class OneTimePayment(models.Model):
         db_table='one_time_payment'
 
     
-    transaction = models.ForeignKey(
-        Transaction,
-        on_delete = models.CASCADE
+    # transaction = models.ForeignKey(
+    #     Transaction,
+    #     on_delete = models.CASCADE,
+    #     null =True,
+    #     blank = True
+    # )
+    is_recuring = models.BooleanField(default=False)
+    price = models.FloatField(default=0, null=True, blank=True)
+    pricing_plan = models.ForeignKey(
+    'pricing_plan.PricingPlan',
+        on_delete = models.CASCADE,
+        null = True,
+        blank = True
     )
-
 
