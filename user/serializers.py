@@ -31,6 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
             'last_name',
             'username', 
             'email',
+            'password',
         )
 
     def save(self):
