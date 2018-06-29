@@ -12,9 +12,6 @@ class Country(models.Model):
 
     def __str__(self):
         return self.name
-    
-    def __unicode__(self):
-        return '%s' % (self.name)
 
 class Profile(models.Model):
     class Meta:
@@ -32,12 +29,12 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True,)
 
     #relation ke user id
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name='user',
+        related_name='profile',
     )
     #related ke country id
     country = models.OneToOneField(

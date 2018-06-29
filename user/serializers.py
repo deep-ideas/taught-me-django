@@ -9,14 +9,14 @@ from .models import Country , Profile
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # email = serializers.EmailField(
-    #     required=True,
-    #     validators=[UniqueValidator(queryset=User.objects.all())]
-    # )
-    # username = serializers.CharField(
-    #     validators=[UniqueValidator(queryset=User.objects.all())]
-    # )
-    # password = serializers.CharField(min_length=8, write_only=True)
+    email = serializers.EmailField(
+        required=True,
+        validators=[UniqueValidator(queryset=User.objects.all())]
+    )
+    username = serializers.CharField(
+        validators=[UniqueValidator(queryset=User.objects.all())]
+    )
+    password = serializers.CharField(min_length=8, write_only=True)
 
     class Meta:
         validator=[UniqueTogetherValidator(
@@ -40,22 +40,37 @@ class CountrySerializer(serializers.ModelSerializer):
         model = Country
         fields = ("name","flag")
 
-class UserSerializerSimple(UserSerializer):
+class UserSerializerSimple(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email')
+        fields = ('username',)
 
 class ProfileSerializer(serializers.ModelSerializer):
-    country = CountrySerializer()
-    phone_number = serializers.CharField(
-        required=True,
-        validators=[UniqueValidator(queryset=Profile.objects.all())]
-    )
+    user = UserSerializerSimple(read_only=True)
+    country = CountrySerializer(read_only=True)
+
+    user_id = serializers.IntegerField(write_only=True)
+    user_email = serializers.CharField(write_only=True)
+    # phone_number = serializers.CharField(
+    #     required=True,
+    #     validators=[UniqueValidator(queryset=Profile.objects.all())]
+    # )
     class Meta:
         model = Profile
-        fields=('phone_number','country') 
-
-        
+        fields=(
+            'id',
+            'user',
+            'date_of_birth',
+            'gender',
+            'address_line',
+            'city',
+            'region',
+            'postal_code',
+            'phone_number',
+            'country',
+            'user_id',
+            'user_email'
+        )
 
     
 

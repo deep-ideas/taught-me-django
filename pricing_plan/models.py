@@ -16,11 +16,13 @@ class PricingPlan(models.Model):
         db_table = 'pricing_plan'
     
     name = models.CharField(max_length=50, blank=True, null=True)
+    # price = models.FloatField(default=0, blank=True, null=True)
     payment_type = models.PositiveSmallIntegerField(validators=[MaxValueValidator(2), MinValueValidator(0)])
     purchase_url = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     is_recuring = models.BooleanField(default=False)
+    
 
 
     #relation many to one with coursea
