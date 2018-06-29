@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator,UniqueTogetherValidator
+from rest_framework_recursive.fields import RecursiveField
 from django.contrib.auth.models import User
 
 
@@ -24,7 +25,13 @@ class UserSerializer(serializers.ModelSerializer):
             fields=("email","username","password")
         )]
         model = User
-        fields = ('id','first_name','last_name','username', 'email',)
+        fields = (
+            'id',
+            'first_name',
+            'last_name',
+            'username', 
+            'email',
+        )
 
     def save(self):
         user = User.objects.create_user(
@@ -34,7 +41,6 @@ class UserSerializer(serializers.ModelSerializer):
         )
         return user
 
-
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
@@ -43,7 +49,10 @@ class CountrySerializer(serializers.ModelSerializer):
 class UserSerializerSimple(UserSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email')
+        fields = ('first_name','last_name', 'username', 'email')
+
+    def __str__(self):
+        return self.username
 
 class UserSerializerName(UserSerializer):
     class Meta:
@@ -51,15 +60,43 @@ class UserSerializerName(UserSerializer):
         fields = ('username','first_name','last_name',)
 
 class ProfileSerializer(serializers.ModelSerializer):
-    country = CountrySerializer()
+    country = CountrySerializer(read_only=True)
     phone_number = serializers.CharField(
         required=True,
         validators=[UniqueValidator(queryset=Profile.objects.all())]
     )
+    user = RecursiveField('user.serializers.UserSerializer',read_only=True)
+    country_id = serializers.IntegerField(write_only=True)
+
+    user_by = serializers.IntegerField(write_only=True)
+
     class Meta:
         model = Profile
-        fields=('phone_number','country') 
+        fields=(
+            'phone_number',
+            'country',
+            'user',
+            'date_of_birth',
+            'gender',
+            'address_line',
+            'city',
+            'region',
+            'postal_code',
 
+            'user_by',
+            'country_id',
+        ) 
+        depth = 1
+    def create(self, validated_data):
+        profile = Profile(**validated_data)
+
+        country_id = validated_data.get('country_id')
+        validated_data.pop('country_id',None)
+
+        countryId = Country.objects.get(id=country_id)
+        profile.country = countryId
+        profile.save()
+        return profile
         
 
     
