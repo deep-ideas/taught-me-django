@@ -66,10 +66,9 @@ class CurriculumSerializers(serializers.ModelSerializer):
         branch.update(**validated_data)
         return branch.get()
 
-class CurriculumSerializersSimple(serializers.HyperlinkedModelSerializer):
+class CurriculumSerializersSimple(serializers.ModelSerializer):
     class Meta:
         model = Curriculum
         fields = (
-            'url',
             'name',
         )

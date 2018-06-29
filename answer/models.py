@@ -25,7 +25,7 @@ class Answer(models.Model):
         on_delete=models.CASCADE,
         blank=True, 
         null=True,
-        related_name='from_question'
+        related_name='to_question'
     ) 
 
     quiz = models.ForeignKey(
@@ -33,7 +33,7 @@ class Answer(models.Model):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='from_quiz'
+        related_name='from_answer'
     )
 
     created_by = models.ForeignKey(
