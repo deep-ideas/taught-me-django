@@ -36,6 +36,7 @@ class CommentSerializers(serializers.ModelSerializer):
 
 
 class CommentSerializersSimple(serializers.ModelSerializer):
+    name = RecursiveField("user.serializers.UserSerializerName",read_only=True)
     class Meta:
         model = Comment
         fields = (

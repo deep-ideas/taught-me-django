@@ -14,11 +14,12 @@ class LectureSerializers(serializers.ModelSerializer):
     section = RecursiveField("section.serializers.SectionSerializersSimple",read_only=True,required=False,)
     # section = SectionSerializersSimple()
     quizzes = RecursiveField("quiz.serializers.QuizSerializersSimple",read_only=True,required=False,many=True)
-    from_comment = RecursiveField('comment.serializers.CommentSerializersSimple',read_only=True,many=True)
-    getSection = serializers.IntegerField(allow_null=True,write_only=True,required=False,)
+    comment = RecursiveField('comment.serializers.CommentSerializersSimple',read_only=True,many=True)
+    section_id = serializers.IntegerField(allow_null=True,write_only=True,required=False,)
     class Meta:
         model=Lecture
         fields=(
+            'id',
             "name",
             "description",
             "video_url",
@@ -31,11 +32,11 @@ class LectureSerializers(serializers.ModelSerializer):
             #related things
             "section",
             "quizzes",
-            "from_comment",
+            "comment",
             
-            'getSection',
-            'updated_by',
-            'created_by',
+            'section_id',
+            # 'updated_by',
+            # 'created_by',
     
         )
     
@@ -49,13 +50,13 @@ class LectureSerializers(serializers.ModelSerializer):
     #     return validated_data
 
     def create(self, validated_data):
-        getSection = validated_data.get("getSection")
-        validated_data.pop("getSection", None)
+        section_id = validated_data.get("section_id")
+        validated_data.pop("section_id", None)
 
         lecture = Lecture(**validated_data)
 
         #related with section
-        section = Section.objects.get(id=getSection)
+        section = Section.objects.get(id=section_id)
         lecture.section = section
         lecture.save()
         
