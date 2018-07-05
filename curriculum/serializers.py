@@ -10,6 +10,7 @@ from section.serializers import SectionSerializersSimple
 
 class CurriculumSerializers(serializers.ModelSerializer):
     course = RecursiveField('course.serializers.CourseSerializersSimple',allow_null=True,required=False,read_only=True)
+    # curriculum = RecursiveField('curriculum.serializers.CurricilumSerializersSimple',read_only=True)
     # course = [RecursiveField('course.serializers.CourseSerializersSimple',many=True,blank=True, null=True)]
     # course = [CourseSerializersSimple(read_only=True,many=True ,required=False)]
     course_id = serializers.IntegerField(write_only=True, required=False, allow_null=True)
@@ -67,8 +68,16 @@ class CurriculumSerializers(serializers.ModelSerializer):
         return branch.get()
 
 class CurriculumSerializersSimple(serializers.ModelSerializer):
+    created_by = RecursiveField('user.serializers.UserSerializerName',read_only=True)
+    updated_by = RecursiveField('user.serializers.UserSerializerName',read_only=True)
     class Meta:
         model = Curriculum
         fields = (
             'name',
+            'course',
+            'created_at',
+            'updated_at',
+
+            'created_by',
+            'updated_by',
         )

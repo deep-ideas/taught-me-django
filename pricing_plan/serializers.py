@@ -4,7 +4,7 @@ from course.serializers import CourseSerializers
 
 from .models import PricingPlan
 class PricingPlanSerializer(serializers.ModelSerializer):
-    course = [RecursiveField('course.serializers.CourseSerializers',many=True)]
+    course = RecursiveField('course.serializers.CourseSerializersSimple',)
     class Meta : 
         model = PricingPlan
         fields = (
