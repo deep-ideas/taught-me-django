@@ -14,17 +14,17 @@ class Course(models.Model):
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-    is_enrolled = models.BooleanField(default=False)
+    # is_enrolled = models.BooleanField(default=False)
     
 
-    created_by = models.OneToOneField(
+    created_by = models.ForeignKey(
         User,
         on_delete = models.SET_NULL,
         null = True,
         related_name = 'course_created_by'
     )
 
-    updated_by = models.OneToOneField(
+    updated_by = models.ForeignKey(
         User,
         on_delete = models.SET_NULL,
         null = True,

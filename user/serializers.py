@@ -6,9 +6,6 @@ from django.contrib.auth.models import User
 
 from .models import Country , Profile
 
-
-
-
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,
@@ -58,7 +55,7 @@ class UserSerializerSimple(serializers.ModelSerializer):
 class UserSerializerName(UserSerializer):
     class Meta:
         model = User
-        fields = ('username','first_name','last_name',)
+        fields = ('username',)
 
 class ProfileSerializer(serializers.ModelSerializer):
     country = CountrySerializer(read_only=True)

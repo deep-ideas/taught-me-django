@@ -22,7 +22,7 @@ class Curriculum(models.Model):
     course = models.ForeignKey(
         "course.Course",
         on_delete = models.CASCADE,
-        related_name="from_curriculum",
+        related_name="curriculum",
         blank=True,
         null=True,
     )
