@@ -39,7 +39,7 @@ class CourseViewSet(viewsets.ModelViewSet):
             if course:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response({'error': serializer.errors}, status=status.HTTP_200_OK)
+        return Response({'error': serializer.errors}, status=status.HTTP_403_FORBIDDEN)
 
     # @action(methods=['get'], permission_classes=[IsAuthenticated], detail=False)
     # def get_schema(self, request):
